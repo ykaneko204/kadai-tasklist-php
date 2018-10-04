@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @if (Auth::user() == $user)
+        
     <h1>タスク一覧</h1>
 
     @if (count($tasks) > 0)
@@ -26,5 +28,10 @@
     @endif
 
     {!! link_to_route('tasks.create', '新規タスクの登録', null, ['class' => 'btn btn-primary']) !!}
+    
+    @else
+        {{ $user->name }}
+    @endif
+
     
 @endsection
